@@ -8,7 +8,7 @@
 * [License](#license)
 
 ## General info
-This project contains a .NET Standard 2.0 class library for signing HTTP requests using AWS4 algorithm. This class library is intended to be used in an ASP.NET Core project as a service injected by DI, but can be modified to be used in any type of project.
+This project contains a .NET Standard 2.0 class library for signing HTTP requests using [AWS4 signature algorithm](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html). This class library is intended to be used in an ASP.NET Core project as a service injected by DI, but can be modified to be used in any type of project.
 
 ## IAws4RequestSigner service
 The only exposed interface of the library is the `IAws4RequestSigner` interface that implements two methods. These two methods are used to add the AWS4 signature to a `HttpRequestMessage` object in a syncrhonous or asynchronous way:

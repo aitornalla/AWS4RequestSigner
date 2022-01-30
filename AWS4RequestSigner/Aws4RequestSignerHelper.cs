@@ -26,16 +26,8 @@ namespace AWS4RequestSigner
 
         public string GetCanonicalHeaders(ref HttpRequestMessage httpRequestMessage, out string xAmzDate, out string signedHeaders)
         {
-            if (httpRequestMessage.Version.Major < 2)
-            {
-                if (!httpRequestMessage.Headers.Contains("Host"))
-                    httpRequestMessage.Headers.Host = httpRequestMessage.RequestUri.Host;
-            }
-            else
-            {
-                if (!httpRequestMessage.Headers.Contains(":authority"))
-                    httpRequestMessage.Headers.Add(":authority", httpRequestMessage.RequestUri.Host);
-            }
+            if (string.IsNullOrEmpty(httpRequestMessage.Headers.Host))
+                httpRequestMessage.Headers.Host = httpRequestMessage.RequestUri.Host;
 
             if (!httpRequestMessage.Headers.Contains(X_AMZ_DATE_HEADER_NAME))
             {

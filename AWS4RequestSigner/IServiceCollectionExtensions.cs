@@ -1,14 +1,16 @@
-﻿using AWS4RequestSigner.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
+﻿using AWS4RequestSigner;
+using AWS4RequestSigner.Interfaces;
 
-namespace AWS4RequestSigner
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class IServiceCollectionExtensions
     {
-        public static void AddAws4RequestSigner(this IServiceCollection services)
+        public static IServiceCollection AddAws4RequestSigner(this IServiceCollection services)
         {
             services.AddTransient<IAws4RequestSignerHelper, Aws4RequestSignerHelper>();
             services.AddTransient<IAws4RequestSigner, Aws4RequestSigner>();
+
+            return services;
         }
     }
 }
